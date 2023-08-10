@@ -23,15 +23,35 @@ public class MathUtil {
 //21 giai thừa tràn kiểu long
 //bài này quy ước tính n! trong khoảng từ 0 - 20!    
 // Dùng giải pháp ném ngoại lệ khi khi đưa vào giá trị ngoài vùng   
-    public static long getFactorial(int n) {
+   // public static long getFactorial(int n) {
+//        if(n < 0 || n > 20)
+//            throw new IllegalArgumentException("Invalid argument. N must be between 0..20");
+//        if(n == 0 || n == 1)
+//            return 1; //kết thúc sớm nếu nhận những giá trị đặc biệt
+//        long product = 1; //tích nhân dồn, thuật toán con heo đất
+//        for (int i = 2; i <= n; i++) {
+//            product = product * i;
+//        }
+//        return product;
+//    }
+    
+//    Học về đệ quy:
+// là hiện tượng gọi lại chính mình với một quy mô khác
+//    Ví dụ: Con búp bê Nga, giống nhau và lồng trong nhau
+//    búp bê to, nhỏ hơn, nhỏ hơn nữa, nhỏ hơn nữa... đến điểm dừng
+
+//Tình  giai thừa    
+//n! = 1.2.3.4.5.6... n
+//6! = 6 . 5!
+//5! = 5 x 4! ; 4! = 4 . 3! ...  2 . 1!; 1! -> Điểm dừng
+    
+      public static long getFactorial(int n) {
+          
         if(n < 0 || n > 20)
-            throw new IllegalArgumentException("Invalid argument. N must be between 0..20");
+            throw new IllegalArgumentException("n must be between 0..20 please!");
+          
         if(n == 0 || n == 1)
-            return 1; //kết thúc sớm nếu nhận những giá trị đặc biệt
-        long product = 1; //tích nhân dồn, thuật toán con heo đất
-        for (int i = 2; i <= n; i++) {
-            product = product * i;
-        }
-        return product;
+            return 1;
+        return n * getFactorial(n - 1);
     }
 }
